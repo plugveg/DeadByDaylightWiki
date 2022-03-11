@@ -16,5 +16,14 @@
         <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/WeaponsController.php'|file_link(0) }}">src/Controller/WeaponsController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/weapons/index.html.twig'|file_link(0) }}">templates/weapons/index.html.twig</a></code></li>
     </ul>
+
+    {% for entite in Weapons %}
+        <ul>
+            <b>{{ entite.WeaponName }}</b>
+        </ul>
+        <img src="{{ entite.WeaponImage }}">
+        <br>
+    {% endfor %}
+
 </div>
 {% endblock %}

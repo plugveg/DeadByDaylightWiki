@@ -10,10 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/survivors")
+ */
 class SurvivorsController extends AbstractController
 {
     /**
-     * @Route("/survivors", name="survivors")
+     * @Route("/", name="survivors")
      */
     public function index(EntityManagerInterface $em): Response
     {

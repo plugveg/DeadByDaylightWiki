@@ -89,4 +89,10 @@ class Perks
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string) $this->perk_survivor;
+    }
+
 }

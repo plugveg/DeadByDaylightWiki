@@ -11,11 +11,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ *
+ * @Route("/map")
+ */
 class MapController extends AbstractController
 {
     /**
      *
-     * @Route("/map", name="map")
+     * @Route("/", name="map")
      */
     public function index(ManagerRegistry $doctrine): Response
     {

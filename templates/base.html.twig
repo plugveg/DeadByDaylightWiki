@@ -21,7 +21,7 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %} {# check si l'utilisateur est connecté #}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="#">
-                    <img src="..\image\logodbd.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                    <img src="..\..\..\image\logodbd.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
                     DeadByDaylightWiki
                 </a>
                 <div class="container-fluid">
@@ -42,7 +42,13 @@
                                 <a class="nav-link active" aria-current="page" href="{{ path('survivors') }}">Survivors</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ path('perks') }}">Perks</a>
+                                <a class="nav-link active" aria-current="page" href="{{ path('killers') }}">Killers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ path('perks') }}">PerksSurvivors</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ path('perks_killers') }}">PerksKillers</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ path('map') }}">Maps</a>

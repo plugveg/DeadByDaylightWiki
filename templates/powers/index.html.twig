@@ -16,5 +16,13 @@
         <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/PowersController.php'|file_link(0) }}">src/Controller/PowersController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/powers/index.html.twig'|file_link(0) }}">templates/powers/index.html.twig</a></code></li>
     </ul>
+
+    {% for entite in Powers %}
+        <ul>
+            <b>{{ entite.PowerName }}</b>
+        </ul>
+        <img src="{{ entite.PowerImage }}">
+        <br>
+    {% endfor %}
 </div>
 {% endblock %}

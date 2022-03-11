@@ -17,4 +17,19 @@
         <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/perks/index.html.twig'|file_link(0) }}">templates/perks/index.html.twig</a></code></li>
     </ul>
 </div>
+    {% for entite in Perks %}
+        <ul>
+            <b>{{ entite.PerkName }}</b>
+        </ul>
+        <img src="{{ entite.PerkImage }}">
+        <br>
+        <td>
+            <a href="{{ path('perks_read', {'id': entite.id}) }}">INFO</a>
+        </td>
+        <br>
+        {% if entite.PerkSurvivor %}
+            <img src="{{ entite.PerkSurvivor.SurvivorImage }}">
+        {% endif %}
+
+    {% endfor %}
 {% endblock %}

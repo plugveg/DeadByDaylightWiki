@@ -35,16 +35,6 @@ class Survivors
     private $survivor_perk1;
 
     /**
-     * @ORM\OneToOne(targetEntity=Perks::class, cascade={"persist", "remove"})
-     */
-    private $survivor_perk2;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Perks::class, cascade={"persist", "remove"})
-     */
-    private $survivor_perk3;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $survivor_image;
@@ -130,11 +120,6 @@ class Survivors
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->survivor_perk2;
-    }
-
     public function getSurvivorSummary(): ?string
     {
         return $this->survivor_summary;
@@ -146,4 +131,6 @@ class Survivors
 
         return $this;
     }
+
+
 }
