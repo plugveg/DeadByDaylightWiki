@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Perks;
 use APP\Entity\Survivors;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,4 +49,5 @@ class FormController extends AbstractController
             'survivors' => $survivors,
         ]);
     }
+
 }

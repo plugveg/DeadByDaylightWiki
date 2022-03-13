@@ -132,5 +132,15 @@ class Survivors
         return $this;
     }
 
+   public function setSurvivor(Survivors $survivors): self
+   {
+       $this->survivor = $survivors;
+       return $survivors;
+   }
+
+   public function getSurvivor(): Survivors
+   {
+       return $this->survivor;
+   }
 
 }
