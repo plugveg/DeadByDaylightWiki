@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ perk.PerkName }}</h1>
+    <div>
+        <img src="{{ perk.PerkImage }}">
+    </div>
+    <div>
+        <p>
+            {{ perk.PerkExplanation | nl2br }}
+        </p>
+    </div>
+    <a href="{{ path('perks_edit', {'id': perk.id}) }}">edit</a>
+{% endblock %}

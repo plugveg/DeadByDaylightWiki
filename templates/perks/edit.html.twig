@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Perk{% endblock %}
+
+{% block body %}
+    <h1>Edit Perk</h1>
+
+    {{ include('perks/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('perks') }}">back to list</a>
+
+    {{ include('perks/_delete_form.html.twig') }}
+{% endblock %}

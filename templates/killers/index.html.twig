@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello KillersController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/KillersController.php'|file_link(0) }}">src/Controller/KillersController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/killers/index.html.twig'|file_link(0) }}">templates/killers/index.html.twig</a></code></li>
+    </ul>
+
+    {% for entite in Killers %}
+        <ul>
+            <b>{{ entite.KillerName }}</b>
+        </ul>
+        <img src="{{ entite.KillerImage }}">
+        <br>
+        {% for perk in entite.KillerPerks %}
+            {% if perk.PerkkillerName %}
+                <img src="{{ perk.PerkkillerImage }}">
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    {% for killer in Killers %}
+
+    {% endfor %}
+</div>
+{% endblock %}
