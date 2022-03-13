@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Killers;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,6 +24,19 @@ class KillersController extends AbstractController
         return $this->render('killers/index.html.twig', [
             'controller_name' => 'KillersController',
             'Killers' => $Killers,
+        ]);
+    }
+
+    /**
+     * @Route ("/{id}/read", name="killer_read")
+     */
+    public function readPerks(ManagerRegistry $doctrine, int $id){
+        $em = $doctrine->getManager();
+
+        $killer = $em->getRepository(Killers::class)->find($id);
+
+        return $this->renderForm('killers/read.html.twig', [
+            'killer' => $killer,
         ]);
     }
 }

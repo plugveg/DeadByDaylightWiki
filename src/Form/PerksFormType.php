@@ -15,7 +15,7 @@ class PerksFormType extends AbstractType
             ->add('perk_name')
             ->add('perk_image')
             ->add('perk_explanation')
-            ->add('perk_survivor')
+            //->add('perk_survivor')
         ;
     }
 

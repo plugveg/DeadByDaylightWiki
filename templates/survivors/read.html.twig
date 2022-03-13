@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ survivor.SurvivorName }}</h1>
+    <div>
+        <img src="{{ survivor.SurvivorImage }}">
+    </div>
+    <div>
+        <p>
+            {{ survivor.SurvivorHistory | nl2br }}
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ survivor.SurvivorSummary | nl2br }}
+        </p>
+    </div>
+    <div>
+        {% for entite in survivor.SurvivorPerk1 %}
+            {% if entite.PerkName %}
+                <img src="{{ entite.PerkImage }}">
+            {% endif %}
+        {% endfor %}
+    </div>
+   {# <a href="{{ path('perks_edit', {'id': perk.id}) }}">edit</a>#}
+{% endblock %}

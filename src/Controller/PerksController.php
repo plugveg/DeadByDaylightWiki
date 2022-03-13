@@ -33,7 +33,6 @@ class PerksController extends AbstractController
         ]);
     }
 
-    //Afficher un article
     /**
      * @Route ("/{id}/read", name="perks_read")
      */

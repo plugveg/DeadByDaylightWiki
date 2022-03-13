@@ -22,11 +22,15 @@
         </ul>
         <img src="{{ entite.SurvivorImage }}">
         <br>
+        <td>
+            <a href="{{ path('survivor_read', {'id': entite.id}) }}">INFO ABOUT THE SURVIVOR</a>
+        </td>
+{#        <br>
         {% for perk in entite.SurvivorPerk1 %}
             {% if perk.PerkName %}
                 <img src="{{ perk.PerkImage }}">
             {% endif %}
-        {% endfor %}
+        {% endfor %}#}
     {% endfor %}
 
     {% for survivor in Survivors %}

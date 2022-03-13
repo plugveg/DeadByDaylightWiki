@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ killer.KillerNickname }}</h1>
+    <h2>{{ killer.KillerName }}</h2>
+    <div>
+        <img src="{{ killer.KillerImage }}">
+    </div>
+    <div>
+        <p>
+            {{ killer.KillerMap.MapName }}
+            <img src="{{ killer.KillerMap.MapImage }}">
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ killer.KillerWeapon.WeaponName }}
+            <img src="{{ killer.KillerWeapon.WeaponImage }}">
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ killer.KillerPower.PowerName }}
+            <img src="{{ killer.KillerPower.PowerImage }}">
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ killer.KillerSpeed }}
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ killer.KillerHistory | nl2br }}
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ killer.KillerSummary | nl2br }}
+        </p>
+    </div>
+    <div>
+        {% for entite in killer.KillerPerks %}
+            {% if entite.PerkkillerName %}
+                <img src="{{ entite.PerkkillerImage }}">
+            {% endif %}
+        {% endfor %}
+    </div>
+    {# <a href="{{ path('perks_edit', {'id': perk.id}) }}">edit</a>#}
+{% endblock %}
