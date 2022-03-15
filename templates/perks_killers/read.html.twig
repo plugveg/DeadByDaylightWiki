@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ perkkiller.PerkkillerName }}</h1>
+    <div>
+        <img src="{{ perkkiller.PerkkillerImage }}">
+    </div>
+    <div>
+        <p>
+            {{ perkkiller.PerkkillerExplanation | nl2br }}
+        </p>
+    </div>
+    <a href="{{ path('perkskillers_edit', {'id': perkkiller.id}) }}">edit</a>
+{% endblock %}

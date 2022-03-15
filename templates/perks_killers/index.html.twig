@@ -26,6 +26,9 @@
         {% if entite.PerkKiller %}
             <img src="{{ entite.PerkKiller.KillerImage }}">
         {% endif %}
+        <td>
+            <a href="{{ path('perkskillers_read', {'id': entite.id}) }}">INFO ABOUT THE PERK</a>
+        </td>
     {% endfor %}
 
 </div>

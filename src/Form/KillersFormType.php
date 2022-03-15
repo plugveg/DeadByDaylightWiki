@@ -2,28 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Perks;
+use App\Entity\Killers;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PerksFormType extends AbstractType
+class KillersFormType extends AbstractType
 {
-    /*Pour modifier une Perk déjà existante (sans la supprimer) */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('perk_name')
-            ->add('perk_image')
-            ->add('perk_explanation')
-            //->add('perk_survivor')
+            ->add('killer_nickname')
+            ->add('killer_name')
+            ->add('killer_image')
+            ->add('killer_speed')
+            ->add('killer_summary')
+            ->add('killer_history')
+            //->add('killer_map')
+            //->add('killer_weapon')
+            //->add('killer_power')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Perks::class,
+            'data_class' => Killers::class,
         ]);
     }
 }

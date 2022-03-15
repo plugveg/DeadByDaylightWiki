@@ -6,24 +6,30 @@
     <div>
         <img src="{{ killer.KillerImage }}">
     </div>
-    <div>
-        <p>
-            {{ killer.KillerMap.MapName }}
-            <img src="{{ killer.KillerMap.MapImage }}">
-        </p>
-    </div>
-    <div>
-        <p>
-            {{ killer.KillerWeapon.WeaponName }}
-            <img src="{{ killer.KillerWeapon.WeaponImage }}">
-        </p>
-    </div>
-    <div>
-        <p>
-            {{ killer.KillerPower.PowerName }}
-            <img src="{{ killer.KillerPower.PowerImage }}">
-        </p>
-    </div>
+    {% if killer.KillerMap != NULL %}
+        <div>
+            <p>
+                {{ killer.KillerMap.MapName }}
+                <img src="{{ killer.KillerMap.MapImage }}">
+            </p>
+        </div>
+    {% endif %}
+    {% if killer.KillerWeapon != NULL %}
+        <div>
+            <p>
+                {{ killer.KillerWeapon.WeaponName }}
+                <img src="{{ killer.KillerWeapon.WeaponImage }}">
+            </p>
+        </div>
+    {% endif %}
+    {% if killer.KillerPower != NULL %}
+        <div>
+            <p>
+                {{ killer.KillerPower.PowerName }}
+                <img src="{{ killer.KillerPower.PowerImage }}">
+            </p>
+        </div>
+    {% endif %}
     <div>
         <p>
             {{ killer.KillerSpeed }}
@@ -46,5 +52,5 @@
             {% endif %}
         {% endfor %}
     </div>
-    {# <a href="{{ path('perks_edit', {'id': perk.id}) }}">edit</a>#}
+     <a href="{{ path('killers_edit', {'id': killer.id}) }}">edit</a>
 {% endblock %}

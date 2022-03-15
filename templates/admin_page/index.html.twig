@@ -17,7 +17,17 @@
         <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/admin_page/index.html.twig'|file_link(0) }}">templates/admin_page/index.html.twig</a></code></li>
     </ul>
     <td>
-        <a href="{{ path('form_perk') }}">GO TO ADD A PERK</a>
+        <a href="{{ path('form_perk') }}">GO TO ADD A PERK OF SURVIVOR</a>
+    </td>
+    <td>
+        <a href="{{ path('form_survivor') }}">GO TO ADD A SURVIVOR</a>
+    </td>
+    <td>
+        <a href="{{ path('form_killer') }}">GO TO ADD A KILLER</a>
+    </td>
+    <br>
+    <td>
+        <a href="{{ path('form_perkkiller') }}">GO TO ADD A PERK OF KILLER</a>
     </td>
 </div>
 {% endblock %}

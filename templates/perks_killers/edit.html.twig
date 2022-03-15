@@ -1,20 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Perk{% endblock %}
+{% block title %}Edit Perk of Killers{% endblock %}
 {% block stylesheets %}
     <style>
         body{
             background-color: gray;
         }
-        #perks_form{
+        #perks_killers_form{
             text-align: center;
         }
         input{
             margin-left: 5%;
+            margin-top: 2%;
             width: 80%;
         }
-        #perks_form_perk_explanation{
-            margin-left: 5%;
+        textarea{
+            margin-top: 2%;
+        }
+        #perks_killers_form_perkkiller_explanation{
+            margin-left: 4%;
             width: 80%;
         }
         #Update{
@@ -35,13 +39,13 @@
 
 
 {% block body %}
-    <h1>Edit Perk</h1>
+    <h1>Edit Perk of Killers</h1>
 
-    {{ include('perks/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('perks_killers/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <form method="post" action="{{ path('perks') }}">
+    <form method="post" action="{{ path('perks_killers') }}">
         <button id="Back" class="btn" style="background-color: green; color: white">Back To List</button>
     </form>
 
-    {{ include('perks/_delete_form.html.twig') }}
+    {{ include('perks_killers/_delete_form.html.twig') }}
 {% endblock %}

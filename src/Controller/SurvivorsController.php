@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
-use App\Entity\Perks;
 use App\Entity\Survivors;
+use App\Form\SurvivorsFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,7 +37,7 @@ class SurvivorsController extends AbstractController
     }
 
     /**
-     * @Route ("/{id}/read", name="survivor_read")
+     * @Route ("/{id}/read", name="survivors_read")
      */
     public function readPerks(ManagerRegistry $doctrine, int $id){
         $em = $doctrine->getManager();
@@ -47,5 +47,38 @@ class SurvivorsController extends AbstractController
         return $this->renderForm('survivors/read.html.twig', [
             'survivor' => $survivor,
         ]);
+    }
+
+    /**
+     * @Route ("/{id}/edit", name="survivors_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Survivors $survivors, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(SurvivorsFormType::class, $survivors);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('survivors', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('survivors/edit.html.twig', [
+            'survivors' => $survivors,
+            'formsurv' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="survivors_delete", methods={"GET", "POST"})
+     */
+    public function delete(Request $request, Survivors $survivors, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$survivors->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($survivors);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('survivors', [], Response::HTTP_SEE_OTHER);
     }
 }

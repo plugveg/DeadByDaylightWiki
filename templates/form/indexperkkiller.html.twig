@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Formations{% endblock %}
-
+{% block title %}Perks Killers{% endblock %}
+{#HTML de la création de perks#}
 {% block body %}
     <style>
         body{
@@ -11,17 +11,6 @@
         }
         h1{
             text-align: center;
-        }
-        .contenu{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-            gap: 20px 20px;
-        }
-        .formation{
-            margin: 20px;
-            padding: 10px;
-            background-color: #9a9b9c80;
         }
         .formulaire{
             position: relative;
@@ -33,7 +22,7 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="formulaire">
             <div class="row">
-                <h2>Ajout d'une formation</h2>
+                <h2>Ajout d'une perk killer</h2>
                 {% if msg %}
                     <div class="alert alert-success">{{ msg }}</div>
                 {% endif %}
@@ -48,20 +37,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="perk_explanation" class="form-label">Explanation of the perk</label>
-                        <input required type="text" class="form-control" id="perk_explanation" name="perk_explanation">
+                        <textarea required type="text" class="form-control" id="perk_explanation" name="perk_explanation"></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="perk_survivor_id" class="form-label">Who's the survivor belong to this perk</label>
-                        <select class="input--style-5" name="perk_survivor_id" style="width:100%;">
-                            {% for survivor in survivors %}
-                                <option>
-                                    {{ survivor.id }} - {{ survivor.SurvivorName }}
-                                </option>
-                                <br>
-                            {% endfor %}
-                        </select>
-                    </div>
-
 
                     <!--Bouton pour valider-->
                     <input type="submit" class="btn btn-primary">

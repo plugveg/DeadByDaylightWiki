@@ -6,15 +6,23 @@
         body{
             background-color: gray;
         }
-        #perks_form{
+        #survivors_form{
             text-align: center;
         }
         input{
             margin-left: 5%;
+            margin-top: 2%;
             width: 80%;
         }
-        #perks_form_perk_explanation{
+        textarea{
+            margin-top: 2%;
+        }
+        #survivors_form_survivor_history{
             margin-left: 5%;
+            width: 80%;
+        }
+        #survivors_form_survivor_summary{
+            margin-left: 4%;
             width: 80%;
         }
         #Update{
@@ -35,13 +43,13 @@
 
 
 {% block body %}
-    <h1>Edit Perk</h1>
+    <h1>Edit Survivor</h1>
 
-    {{ include('perks/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('survivors/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <form method="post" action="{{ path('perks') }}">
+    <form method="post" action="{{ path('survivors') }}">
         <button id="Back" class="btn" style="background-color: green; color: white">Back To List</button>
     </form>
 
-    {{ include('perks/_delete_form.html.twig') }}
+    {{ include('survivors/_delete_form.html.twig') }}
 {% endblock %}

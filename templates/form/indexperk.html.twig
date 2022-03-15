@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Perks Survivors{% endblock %}
+{#HTML de la création de perks#}
+{% block body %}
+    <style>
+        body{
+            background-attachment:fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        h1{
+            text-align: center;
+        }
+        .formulaire{
+            position: relative;
+            left: 10%;
+            width: 80%;
+        }
+    </style>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="formulaire">
+            <div class="row">
+                <h2>Ajout d'une perk survivor</h2>
+                {% if msg %}
+                    <div class="alert alert-success">{{ msg }}</div>
+                {% endif %}
+                <form action="" method="POST">
+                    <div class="mb-3">
+                        <label for="perk_name" class="form-label">Name of the perk</label>
+                        <input required type="text" class="form-control" id="perk_name" name="perk_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="perk_image" class="form-label">URL for image</label>
+                        <input required type="text" class="form-control" id="perk_image" name="perk_image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="perk_explanation" class="form-label">Explanation of the perk</label>
+                        <textarea required type="text" class="form-control" id="perk_explanation" name="perk_explanation"></textarea>
+                    </div>
+{#                    <div class="mb-3">
+                        <label for="perk_survivor_id" class="form-label">Who's the survivor belong to this perk</label>
+                        <select class="input--style-5" name="perk_survivor_id" style="width:100%;">
+                            {% for survivor in survivors %}
+                                <option>
+                                    {{ survivor.id }} - {{ survivor.SurvivorName }}
+                                </option>
+                                <br>
+                            {% endfor %}
+                        </select>
+                    </div>#}
+
+
+                    <!--Bouton pour valider-->
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

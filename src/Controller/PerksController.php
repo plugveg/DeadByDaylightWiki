@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Entity\Comment;
 use App\Entity\Perks;
-use App\Form\CommentType;
 use App\Form\PerksFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -61,8 +58,8 @@ class PerksController extends AbstractController
         }
 
         return $this->renderForm('perks/edit.html.twig', [
-            'comment' => $perks,
-            'form' => $form,
+            'perks' => $perks,
+            'formperk' => $form,
         ]);
     }
 

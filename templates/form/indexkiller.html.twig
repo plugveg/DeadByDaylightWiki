@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Perks{% endblock %}
+{#HTML de la création de perks#}
+{% block body %}
+    <style>
+        body{
+            background-attachment:fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        h1{
+            text-align: center;
+        }
+        .formulaire{
+            position: relative;
+            left: 10%;
+            width: 80%;
+        }
+    </style>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="formulaire">
+            <div class="row">
+                <h2>Ajout d'un killer</h2>
+                {% if msg %}
+                    <div class="alert alert-success">{{ msg }}</div>
+                {% endif %}
+                <form action="" method="POST">
+                    <div class="mb-3">
+                        <label for="killer_nickname" class="form-label">Nickname of the killer</label>
+                        <input required type="text" class="form-control" id="killer_nickname" name="killer_nickname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="killer_name" class="form-label">Name of the killer</label>
+                        <input required type="text" class="form-control" id="killer_name" name="killer_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="killer_image" class="form-label">Image of the killer</label>
+                        <input required type="text" class="form-control" id="killer_image" name="killer_image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="killer_speed" class="form-label">Speed of the killer</label>
+                        <input required type="text" class="form-control" id="killer_speed" name="killer_speed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="killer_history" class="form-label">History of the killer</label>
+                        <textarea required type="text" class="form-control" id="killer_history" name="killer_history"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="killer_summary" class="form-label">Summary of the killer</label>
+                        <textarea required type="text" class="form-control" id="killer_summary" name="killer_summary"></textarea>
+                    </div>
+
+                    <!--Bouton pour valider-->
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
