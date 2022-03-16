@@ -60,6 +60,7 @@
             <a class="card-link" href="{{ path('maps_read', {'id': killer.KillerMap.id}) }}">Info about {{ killer.KillerMap.MapName }}</a>
             <a class="card-link" href="{{ path('powers_read', {'id': killer.KillerPower.id}) }}">Info about {{ killer.KillerPower.PowerName }}</a>
             <a class="card-link" href="{{ path('weapons_read', {'id': killer.KillerWeapon.id}) }}">Info about {{ killer.KillerWeapon.WeaponName }}</a>
+            {#Redirection vers le formulaire d'edit si on est ADMIN#}
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="card-link" href="{{ path('killers_edit', {'id': killer.id}) }}">Edit the killer</a>
             {% endif %}

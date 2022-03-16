@@ -31,6 +31,8 @@
             <li class="list-group-item"><h5>Power Explanation : </h5><br>{{ power.PowerExplanation | nl2br }}</li>
         </ul>
         <div class="card-body">
+            <a class="card-link" href="{{ path('killer_read', {'id': power.id}) }}">Go to the killer</a>
+            {#Redirection vers le formulaire d'edit si on est ADMIN#}
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="card-link" href="{{ path('powers_edit', {'id': power.id}) }}">Edit the power</a>
             {% endif %}

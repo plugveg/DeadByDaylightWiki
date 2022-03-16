@@ -31,6 +31,7 @@
             <li class="list-group-item"><h5>Map Layout : </h5><br><img src="{{ map.MapLayout }}" alt="layout map"></li>
         </ul>
         <div class="card-body">
+            <a class="card-link" href="{{ path('killer_read', {'id': map.id}) }}">Go the killer related to this map</a>
             {#Redirection vers le formulaire d'edit si on est ADMIN#}
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="card-link" href="{{ path('maps_edit', {'id': map.id}) }}">Edit the map</a>

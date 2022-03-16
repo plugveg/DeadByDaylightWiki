@@ -44,6 +44,7 @@
                 <a class="card-link" href="{{ path('perks_read', {'id': entite.id}) }}">Info about {{ entite.PerkName }}</a>
                 {% endif %}
             {% endfor %}
+            {#Redirection vers le formulaire d'edit si on est ADMIN#}
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="card-link" href="{{ path('survivors_edit', {'id': survivor.id}) }}">Edit the survivor</a>
             {% endif %}
