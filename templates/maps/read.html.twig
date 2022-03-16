@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ map.MapName }}</h1>
+    <div>
+        <h2>Map Image</h2>
+        <img src="{{ map.MapImage }}" alt="photo map">
+    </div>
+    <div>
+        <p>
+            {{ map.MapDescription | nl2br }}
+        </p>
+    </div>
+    <div>
+        <h2>Map Layout</h2>
+        <img src="{{ map.MapLayout }}" alt="layout map">
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('maps_edit', {'id': map.id}) }}">edit</a>
+    {% endif %}
+{% endblock %}

@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/perks_killers")
@@ -44,6 +46,7 @@ class PerksKillersController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="perkskillers_edit", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, PerksKillers $perksKillers, EntityManagerInterface $entityManager): Response
     {

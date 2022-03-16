@@ -52,5 +52,7 @@
             {% endif %}
         {% endfor %}
     </div>
-     <a href="{{ path('killers_edit', {'id': killer.id}) }}">edit</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('killers_edit', {'id': killer.id}) }}">edit</a>
+    {% endif %}
 {% endblock %}

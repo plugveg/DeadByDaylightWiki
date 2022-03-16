@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Perks Killers{% endblock %}
-{#HTML de la création de perks#}
+{% block title %}Les Users{% endblock %}
+{#HTML de la création de map#}
 {% block body %}
     <style>
         body{
@@ -20,22 +20,18 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="formulaire">
             <div class="row">
-                <h2>Ajout d'une perk killer</h2>
+                <h2>Ajout d'un user</h2>
                 {% if msg %}
                     <div class="alert alert-success">{{ msg }}</div>
                 {% endif %}
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="perk_name" class="form-label">Name of the perk</label>
-                        <input required type="text" class="form-control" id="perk_name" name="perk_name">
+                        <label for="username" class="form-label">Username</label>
+                        <input required type="text" class="form-control" id="username" name="username">
                     </div>
                     <div class="mb-3">
-                        <label for="perk_image" class="form-label">URL for image</label>
-                        <input required type="text" class="form-control" id="perk_image" name="perk_image">
-                    </div>
-                    <div class="mb-3">
-                        <label for="perk_explanation" class="form-label">Explanation of the perk</label>
-                        <textarea required type="text" class="form-control" id="perk_explanation" name="perk_explanation"></textarea>
+                        <label for="password" class="form-label">Password</label>
+                        <input required type="password" class="form-control" id="password" name="password">
                     </div>
 
                     <!--Bouton pour valider-->

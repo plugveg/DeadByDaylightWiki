@@ -7,20 +7,22 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
             .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+            body{
+                background-color: gray;
+            }
         </style>
     </head>
 
     <div class="example-wrapper">
-        <h1>Hello to the Dead By Daylight Wiki! ✅</h1>
+        <h1>Hello to the Dead By Daylight Wiki!☠️</h1>
+        <br>
         {% if is_granted('ROLE_USER') %} {# permet de verifier la connection #}
-            <p>Username: {{ app.user.username }}</p>
+            <h2>Welcome: {{ app.user.username }}</h2>
         {% endif %}
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-            <li>Your main is <code><a href="{{ '/' }}">here</a></code></li>
-        </ul>
-        <h2>Le début de la fin</h2>
+        <br>
+        <h1 style="color: red">Death is not an escape!</h1>
+        <br>
+        <h2>Name of Users that visit the site :</h2>
         {% if is_granted('ROLE_ADMIN') %}
             {% for entite in Users %}
             <ul>
@@ -28,6 +30,21 @@
             </ul>
             {% endfor %}
         {% endif %}
+    </div>
+    <div class="example-wrapper">
+        <p>
+            In this site you will be able to learn more about,
+            <a href="{{ path('survivors') }}" style="color: darkblue">SURVIVORS</a>,
+            <a href="{{ path('killers') }}" style="color: darkblue">KILLERS</a>,
+            <a href="{{ path('perks') }}" style="color: darkblue">SURVIVORS' PERKS</a>,
+            <a href="{{ path('perks_killers') }}" style="color: darkblue">KILLERS' PERKS</a>,
+            <a href="{{ path('maps') }}" style="color: darkblue">MAPS</a>,
+            <a href="{{ path('powers') }}" style="color: darkblue">POWERS</a> and
+            <a href="{{ path('weapons') }}" style="color: darkblue">WEAPONS</a>.
+        </p>
+        <p>
+            Enjoy your ride on the site and dive into it !
+        </p>
     </div>
 
 {% endblock %}

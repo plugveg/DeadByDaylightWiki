@@ -9,25 +9,113 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/AdminPageController.php'|file_link(0) }}">src/Controller/AdminPageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/admin_page/index.html.twig'|file_link(0) }}">templates/admin_page/index.html.twig</a></code></li>
-    </ul>
-    <td>
-        <a href="{{ path('form_perk') }}">GO TO ADD A PERK OF SURVIVOR</a>
-    </td>
-    <td>
-        <a href="{{ path('form_survivor') }}">GO TO ADD A SURVIVOR</a>
-    </td>
-    <td>
-        <a href="{{ path('form_killer') }}">GO TO ADD A KILLER</a>
-    </td>
+    <h1>Welcome to the Admin Page ✅</h1>
     <br>
-    <td>
-        <a href="{{ path('form_perkkiller') }}">GO TO ADD A PERK OF KILLER</a>
-    </td>
+    <p>This friendly message is coming from Setsuma:
+        "Love U my friends"</p>
+    <br>
+    <h2>Table for modify users</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Access</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entite in Users %}
+            <tr>
+                <th scope="row">{{ entite.id }}</th>
+                <td>{{ entite.Username }}</td>
+                <td><a href="{{ path('user_read', {'id': entite.id}) }}">INFO ABOUT THIS USER</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <h2>Table to access form to create new entry</h2>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Action</th>
+            <th scope="col">Table</th>
+            <th scope="col">Access</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Add via form</td>
+            <td>Survivors</td>
+            <td>
+                <form method="post" action="{{ path('form_survivor') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add survivors</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Add via form</td>
+            <td>Killers</td>
+            <td>
+                <form method="post" action="{{ path('form_killer') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add killers</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Add via form</td>
+            <td>Perks</td>
+            <td>
+                <form method="post" action="{{ path('form_perk') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add perks for survivors</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">4</th>
+            <td>Add via form</td>
+            <td>PerksKillers</td>
+            <td>
+                <form method="post" action="{{ path('form_perkkiller') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add perks for killers</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">5</th>
+            <td>Add via form</td>
+            <td>Maps</td>
+            <td>
+                <form method="post" action="{{ path('form_map') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add maps</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Add via form</td>
+            <td>Powers</td>
+            <td>
+                <form method="post" action="{{ path('form_power') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add powers</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">6</th>
+            <td>Add via form</td>
+            <td>Weapons</td>
+            <td>
+                <form method="post" action="{{ path('form_weapon') }}">
+                    <button class="btn" style="background-color: darkblue; color: white">Add weapons</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 {% endblock %}

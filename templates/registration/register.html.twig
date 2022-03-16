@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registration{% endblock %}
 
 {% block body %}
-
+    <style>
+        body{
+            background-color: gray;
+            background-image: url("https://c.tenor.com/COkoJ2QLaTgAAAAi/dbd-game.gif");
+        }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="..\image\logodbd.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -26,15 +31,25 @@
         </div>
     </nav>
 
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <form style="margin-left: 10%; color: white">
+        <h1 style="margin-top: 2%; color: firebrick">Registration</h1>
+        {{ form_start(registrationForm) }}
+            <div class="mb-3">
+                {{ form_row(registrationForm.username, {label : 'Username: '}) }}
+            </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="mb-3">
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password: '
+                }) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn" style="background-color: darkblue; color: white">Register</button>
+        {{ form_end(registrationForm) }}
+    </form>
 {% endblock %}

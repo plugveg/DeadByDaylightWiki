@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Survivors{% endblock %}
-{#HTML de la création de perks#}
+{% block title %}Les Maps{% endblock %}
+{#HTML de la création de map#}
 {% block body %}
     <style>
         body{
@@ -20,26 +20,26 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="formulaire">
             <div class="row">
-                <h2>Ajout d'un survivor</h2>
+                <h2>Ajout d'une map</h2>
                 {% if msg %}
                     <div class="alert alert-success">{{ msg }}</div>
                 {% endif %}
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="survivor_name" class="form-label">Name of the survivor</label>
-                        <input required type="text" class="form-control" id="survivor_name" name="survivor_name">
+                        <label for="map_name" class="form-label">Name of the map</label>
+                        <input required type="text" class="form-control" id="map_name" name="map_name">
                     </div>
                     <div class="mb-3">
-                        <label for="survivor_image" class="form-label">URL for image</label>
-                        <input required type="text" class="form-control" id="survivor_image" name="survivor_image">
+                        <label for="map_image" class="form-label">Map's image</label>
+                        <input required type="text" class="form-control" id="map_image" name="map_image">
                     </div>
                     <div class="mb-3">
-                        <label for="survivor_history" class="form-label">History of the survivor</label>
-                        <textarea required type="text" class="form-control" id="survivor_history" name="survivor_history"></textarea>
+                        <label for="map_description" class="form-label">Description of the map</label>
+                        <textarea required type="text" class="form-control" id="map_description" name="map_description"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="survivor_summary" class="form-label">Summary of the survivor</label>
-                        <textarea required type="text" class="form-control" id="survivor_summary" name="survivor_summary"></textarea>
+                        <label for="map_layout" class="form-label">Map's layout</label>
+                        <input required type="text" class="form-control" id="map_layout" name="map_layout">
                     </div>
 
                     <!--Bouton pour valider-->

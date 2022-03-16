@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Powers{% endblock %}
+{% block stylesheets %}
+    <style>
+        body{
+            background-color: gray;
+        }
+        #powers_form{
+            text-align: center;
+        }
+        input{
+            margin-left: 5%;
+            margin-top: 2%;
+            width: 80%;
+        }
+        textarea{
+            margin-top: 2%;
+        }
+        #powers_form_power_description{
+            margin-left: 4%;
+            width: 80%;
+        }
+        #powers_form_power_explanation{
+            margin-left: 4%;
+            width: 80%;
+        }
+        #Update{
+            margin-left: 50%;
+            margin-top: 2%;
+        }
+        #Delete{
+            margin-left: 50.2%;
+        }
+        #Back{
+            margin-left: 49%;
+        }
+        .btn{
+            margin-bottom: 2%;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <h1>Edit Powers</h1>
+
+    {{ include('powers/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <form method="post" action="{{ path('powers') }}">
+        <button id="Back" class="btn" style="background-color: green; color: white">Back To List</button>
+    </form>
+
+    {{ include('powers/_delete_form.html.twig') }}
+{% endblock %}

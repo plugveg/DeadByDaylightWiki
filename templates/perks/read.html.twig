@@ -10,5 +10,7 @@
             {{ perk.PerkExplanation | nl2br }}
         </p>
     </div>
-    <a href="{{ path('perks_edit', {'id': perk.id}) }}">edit</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('perks_edit', {'id': perk.id}) }}">edit</a>
+    {% endif %}
 {% endblock %}

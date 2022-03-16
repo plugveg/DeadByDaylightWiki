@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ power.PowerName }}</h1>
+    <div>
+        <h2>Power Image</h2>
+        <img src="{{ power.PowerImage }}" alt="photo power">
+    </div>
+    <div>
+        <p>
+            {{ power.PowerDescription | nl2br }}
+        </p>
+    </div>
+    <div>
+        <p>
+            {{ power.PowerExplanation | nl2br }}
+        </p>
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('powers_edit', {'id': power.id}) }}">edit</a>
+    {% endif %}
+{% endblock %}

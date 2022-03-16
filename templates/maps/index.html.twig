@@ -18,6 +18,9 @@
             {{ map.mapName }}
             <img src="{{ map.mapImage }}" alt="">
         </ul>
+        <td>
+            <a href="{{ path('maps_read', {'id': map.id}) }}">INFO ABOUT THE MAP</a>
+        </td>
     {% endfor %}
 </div>
 {% endblock %}

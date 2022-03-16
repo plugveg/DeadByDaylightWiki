@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>{{ weapon.WeaponName }}</h1>
+    <div>
+        <h2>Weapon Image</h2>
+        <img src="{{ weapon.WeaponImage }}" alt="photo weapon">
+    </div>
+    <div>
+        <p>
+            {{ weapon.WeaponDescription | nl2br }}
+        </p>
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('weapons_edit', {'id': weapon.id}) }}">edit</a>
+    {% endif %}
+{% endblock %}

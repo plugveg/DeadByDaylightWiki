@@ -23,6 +23,9 @@
         </ul>
         <img src="{{ entite.PowerImage }}">
         <br>
+        <td>
+            <a href="{{ path('powers_read', {'id': entite.id}) }}">INFO ABOUT THE POWER</a>
+        </td>
     {% endfor %}
 </div>
 {% endblock %}

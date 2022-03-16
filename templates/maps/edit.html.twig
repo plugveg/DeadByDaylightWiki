@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Perk{% endblock %}
+{% block stylesheets %}
+    <style>
+        body{
+            background-color: gray;
+        }
+        #maps_form{
+            text-align: center;
+        }
+        input{
+            margin-left: 5%;
+            margin-top: 2%;
+            width: 80%;
+        }
+        textarea{
+            margin-top: 2%;
+        }
+        #maps_form_map_description{
+            margin-left: 4%;
+            width: 80%;
+        }
+        #Update{
+            margin-left: 50%;
+            margin-top: 2%;
+        }
+        #Delete{
+            margin-left: 50.2%;
+        }
+        #Back{
+            margin-left: 49%;
+        }
+        .btn{
+            margin-bottom: 2%;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <h1>Edit Perk</h1>
+
+    {{ include('maps/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <form method="post" action="{{ path('maps') }}">
+        <button id="Back" class="btn" style="background-color: green; color: white">Back To List</button>
+    </form>
+
+    {{ include('maps/_delete_form.html.twig') }}
+{% endblock %}

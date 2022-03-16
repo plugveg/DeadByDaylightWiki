@@ -23,6 +23,9 @@
         </ul>
         <img src="{{ entite.WeaponImage }}">
         <br>
+        <td>
+            <a href="{{ path('weapons_read', {'id': entite.id}) }}">INFO ABOUT THE WEAPON</a>
+        </td>
     {% endfor %}
 
 </div>

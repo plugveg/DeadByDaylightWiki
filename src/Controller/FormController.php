@@ -6,6 +6,10 @@ use App\Entity\Perks;
 use App\Entity\Survivors;
 use App\Entity\Killers;
 use App\Entity\PerksKillers;
+use App\Entity\Maps;
+use App\Entity\Powers;
+use App\Entity\Weapons;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
@@ -133,4 +137,85 @@ nouvelles entrées dans la base de données*/
             'perkskillers' => $perkskillers,
         ]);
     }
+
+    /**
+     * @Route("/map", name="form_map")
+     */
+    public function indexmap(Request $request, EntityManagerInterface $em, \Doctrine\Persistence\ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $maps = $em->getRepository(Maps::class)->findAll();
+
+        $maps = new Maps();
+        $msg = "";
+        $data=$request->request->all();
+        if(count($data)){
+            $maps->setMapName($data["map_name"]);
+            $maps->setMapImage($data["map_image"]);
+            $maps->setMapDescription($data["map_description"]);
+            $maps->setMapLayout($data["map_layout"]);
+            $em->persist($maps);
+            $em->flush();
+            $msg = "Map ajoutée avec succés";
+        }
+
+        return $this->render('form/indexmap.html.twig', [
+            "msg"=>$msg,
+            'maps' => $maps,
+        ]);
+    }
+
+    /**
+     * @Route("/power", name="form_power")
+     */
+    public function indexpower(Request $request, EntityManagerInterface $em, \Doctrine\Persistence\ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $powers = $em->getRepository(Powers::class)->findAll();
+
+        $powers = new Powers();
+        $msg = "";
+        $data=$request->request->all();
+        if(count($data)){
+            $powers->setPowerName($data["power_name"]);
+            $powers->setPowerImage($data["power_image"]);
+            $powers->setPowerDescription($data["power_description"]);
+            $powers->setPowerExplanation($data["power_explanation"]);
+            $em->persist($powers);
+            $em->flush();
+            $msg = "Power ajouté avec succés";
+        }
+
+        return $this->render('form/indexpower.html.twig', [
+            "msg"=>$msg,
+            'powers' => $powers,
+        ]);
+    }
+
+    /**
+     * @Route("/weapon", name="form_weapon")
+     */
+    public function indexweapon(Request $request, EntityManagerInterface $em, \Doctrine\Persistence\ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $weapons = $em->getRepository(Weapons::class)->findAll();
+
+        $weapons = new Weapons();
+        $msg = "";
+        $data=$request->request->all();
+        if(count($data)){
+            $weapons->setWeaponName($data["weapon_name"]);
+            $weapons->setWeaponImage($data["weapon_image"]);
+            $weapons->setWeaponDescription($data["weapon_description"]);
+            $em->persist($weapons);
+            $em->flush();
+            $msg = "Weapon ajouté avec succés";
+        }
+
+        return $this->render('form/indexweapon.html.twig', [
+            "msg"=>$msg,
+            'weapons' => $weapons,
+        ]);
+    }
+
 }

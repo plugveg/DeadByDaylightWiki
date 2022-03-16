@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Perks Killers{% endblock %}
-{#HTML de la création de perks#}
+{% block title %}Les Weapons{% endblock %}
+{#HTML de la création de map#}
 {% block body %}
     <style>
         body{
@@ -20,22 +20,22 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="formulaire">
             <div class="row">
-                <h2>Ajout d'une perk killer</h2>
+                <h2>Ajout d'un weapon</h2>
                 {% if msg %}
                     <div class="alert alert-success">{{ msg }}</div>
                 {% endif %}
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="perk_name" class="form-label">Name of the perk</label>
-                        <input required type="text" class="form-control" id="perk_name" name="perk_name">
+                        <label for="weapon_name" class="form-label">Name of the weapon</label>
+                        <input required type="text" class="form-control" id="weapon_name" name="weapon_name">
                     </div>
                     <div class="mb-3">
-                        <label for="perk_image" class="form-label">URL for image</label>
-                        <input required type="text" class="form-control" id="perk_image" name="perk_image">
+                        <label for="weapon_image" class="form-label">Weapon's image</label>
+                        <input required type="text" class="form-control" id="weapon_image" name="weapon_image">
                     </div>
                     <div class="mb-3">
-                        <label for="perk_explanation" class="form-label">Explanation of the perk</label>
-                        <textarea required type="text" class="form-control" id="perk_explanation" name="perk_explanation"></textarea>
+                        <label for="weapon_description" class="form-label">Description of the weapon</label>
+                        <textarea required type="text" class="form-control" id="weapon_description" name="weapon_description"></textarea>
                     </div>
 
                     <!--Bouton pour valider-->

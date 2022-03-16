@@ -10,5 +10,7 @@
             {{ perkkiller.PerkkillerExplanation | nl2br }}
         </p>
     </div>
-    <a href="{{ path('perkskillers_edit', {'id': perkkiller.id}) }}">edit</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('perkskillers_edit', {'id': perkkiller.id}) }}">edit</a>
+    {% endif %}
 {% endblock %}
