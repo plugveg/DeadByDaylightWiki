@@ -1,8 +1,11 @@
 <?php
 
+/*Info sur le current directory*/
 namespace App\Entity;
 
+/*Permet l'importation des différents Repository*/
 use App\Repository\KillersRepository;
+/*Les use nécessaires pour lancer le code*/
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

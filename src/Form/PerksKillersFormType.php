@@ -1,8 +1,11 @@
 <?php
 
+/*Info sur le current directory*/
 namespace App\Form;
 
+/*Permet l'importation des différentes Entity*/
 use App\Entity\PerksKillers;
+/*Les use nécessaires pour lancer le code*/
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

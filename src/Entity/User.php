@@ -1,8 +1,11 @@
 <?php
 
+/*Info sur le current directory*/
 namespace App\Entity;
 
+/*Permet l'importation des différents Repository*/
 use App\Repository\UserRepository;
+/*Les use nécessaires pour lancer le code*/
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;

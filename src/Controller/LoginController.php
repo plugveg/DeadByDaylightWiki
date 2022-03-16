@@ -1,7 +1,9 @@
 <?php
 
+/*Info sur le current directory*/
 namespace App\Controller;
 
+/*Les use nécessaires pour lancer le code*/
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,6 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
+    /*La route menant à la page de login*/
     /**
      * @Route("/login", name="login")
      */

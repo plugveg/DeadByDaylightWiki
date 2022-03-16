@@ -1,8 +1,11 @@
 <?php
 
+/*Info sur le current directory*/
 namespace App\Repository;
 
+/*Permet l'importation des différentes Entity*/
 use App\Entity\User;
+/*Les use nécessaires pour lancer le code*/
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
