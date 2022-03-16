@@ -1,6 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}{#Permet d'importer la barre de navigation et tous les paramètres du fichier base.html.twig#}
+{% block title %}Lecture du weapon {{ weapon.WeaponName }}{% endblock %}{#Permet de donner un titre à son onglet#}
 {% block body %}
     <style>
+        /*Permet de définir le CSS de la page actuelle*/
         .center{
             display: block;
             margin-left: auto;
@@ -18,7 +20,7 @@
             text-align: center;
         }
     </style>
-
+    {#Permet l'affichage du contenu de la page#}
     <div class="card text-white bg-dark mb-3 centercard">
         <img class="card-img-top center" src="{{ weapon.WeaponImage }}" alt="Card image cap" >
         <div class="card-body">

@@ -1,14 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}{#Permet d'importer la barre de navigation et tous les paramètres du fichier base.html.twig#}
 
-{% block title %}Registration{% endblock %}
+{% block title %}Registration{% endblock %}{#Permet de donner un titre à son onglet#}
 
 {% block body %}
     <style>
+        /*Permet de définir le CSS de la page actuelle*/
         body{
             background-color: gray;
             background-image: url("https://c.tenor.com/COkoJ2QLaTgAAAAi/dbd-game.gif");
         }
     </style>
+    {#Bare de navigation pour se déplacer entre login et registration#}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             <img src="..\image\logodbd.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -31,6 +33,7 @@
         </div>
     </nav>
 
+    {#Formulaire pour inscrire un nouveau user dans la base de données#}
     <div style="margin-left: 10%; color: white">
         <h1 style="margin-top: 2%; color: firebrick">Registration</h1>
         {{ form_start(registrationForm) }}

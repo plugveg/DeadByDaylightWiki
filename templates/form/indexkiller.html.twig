@@ -1,9 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}{#Permet d'importer la barre de navigation et tous les paramètres du fichier base.html.twig#}
 
-{% block title %}Les Perks{% endblock %}
-{#HTML de la création de perks#}
+{% block title %}Ajout d'un Killer{% endblock %}{#Permet de donner un titre à son onglet#}
+{#HTML de la création de killers#}
 {% block body %}
     <style>
+        /*Permet de définir le CSS de la page actuelle*/
         body{
             background-color: gray;
         }
@@ -17,6 +18,7 @@
         }
     </style>
 
+    {#Affichage du formulaire si user a le role ADMIN#}
     {% if is_granted('ROLE_ADMIN') %}
         <div class="formulaire">
             <div class="row">

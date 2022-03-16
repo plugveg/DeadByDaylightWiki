@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}{#Permet d'importer la barre de navigation et tous les paramètres du fichier base.html.twig#}
 
 {% block body %}
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Hello to the Dead By Daylight!{% endblock %}</title>
+        <title>{% block title %}Dead By Daylight Wiki!{% endblock %}{#Permet de donner un titre à son onglet#}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>
+            /*Permet de définir le CSS de la page actuelle*/
             .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
             body{
                 background-color: gray;
@@ -22,8 +23,10 @@
         <br>
         <h1 style="color: red">Death is not an escape!</h1>
         <br>
-        <h2>Name of Users that visit the site :</h2>
+
+        {#Si l'utiisateur connectés est un Admin alors il serra afficher tous les users ayant un compte#}
         {% if is_granted('ROLE_ADMIN') %}
+            <h2>Name of Users that visit the site :</h2>
             {% for entite in Users %}
             <ul>
                 {{ entite.username }}
@@ -31,6 +34,7 @@
             {% endfor %}
         {% endif %}
     </div>
+    {#Tous les liens de redirection vers les differentes main page du site#}
     <div class="example-wrapper">
         <p>
             In this site you will be able to learn more about,
