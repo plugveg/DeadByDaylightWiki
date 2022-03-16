@@ -1,28 +1,51 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <style>
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+            height: 30%;
+        }
+        .centercard{
+            display: block;
+            margin-top: 2%;
+            padding-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
 
-    <h1>{{ survivor.SurvivorName }}</h1>
-    <div>
-        <img src="{{ survivor.SurvivorImage }}">
-    </div>
-    <div>
-        <p>
-            {{ survivor.SurvivorHistory | nl2br }}
-        </p>
-    </div>
-    <div>
-        <p>
-            {{ survivor.SurvivorSummary | nl2br }}
-        </p>
-    </div>
-    <div>
-        {% for entite in survivor.SurvivorPerk1 %}
-            {% if entite.PerkName %}
-                <img src="{{ entite.PerkImage }}">
+    <div class="card text-white bg-dark mb-3 centercard">
+        <img class="card-img-top center" src="{{ survivor.SurvivorImage }}" alt="Card image cap" >
+        <div class="card-body">
+            <h1 class="card-title">{{ survivor.SurvivorName }}</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h5>Survivor History : </h5><br>{{ survivor.SurvivorHistory | nl2br }}</li>
+            <li class="list-group-item"><h5>Survivor Summary : </h5><br>{{ survivor.SurvivorSummary | nl2br }}</li>
+            <li class="list-group-item">
+                <h5>Survivor Perks : </h5><br>
+                {% for entite in survivor.SurvivorPerk1 %}
+                {% if entite.PerkName %}
+                    <p>{{ entite.PerkName }}</p>
+                    <img src="{{ entite.PerkImage }}">
+                {% endif %}
+                {% endfor %}
+        </ul>
+        <div class="card-body">
+            {% for entite in survivor.SurvivorPerk1 %}
+                {% if entite.PerkName %}
+                <a class="card-link" href="{{ path('perks_read', {'id': entite.id}) }}">Info about {{ entite.PerkName }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="card-link" href="{{ path('survivors_edit', {'id': survivor.id}) }}">Edit the survivor</a>
             {% endif %}
-        {% endfor %}
+        </div>
     </div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('survivors_edit', {'id': survivor.id}) }}">edit</a>
-    {% endif %}
+
 {% endblock %}

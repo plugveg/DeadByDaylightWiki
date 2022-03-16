@@ -9,18 +9,35 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>This is the Maps Page! ☠️</h1>
+    <br>
+    <b style="color: red">Death is not an espace ! Remember</b>
+    <br>
+    <br>
 
-    This friendly message is coming from:
-    <h2>Les Layouts des maps</h2>
-    {% for map in Maps %}
-        <ul>
-            {{ map.mapName }}
-            <img src="{{ map.mapImage }}" alt="">
-        </ul>
-        <td>
-            <a href="{{ path('maps_read', {'id': map.id}) }}">INFO ABOUT THE MAP</a>
-        </td>
-    {% endfor %}
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Photo</th>
+            <th scope="col">More Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entite in Maps %}
+            <tr>
+                <th scope="row">{{ entite.id }}</th>
+                <td>{{ entite.mapName }}</td>
+                <td><img style="width: 100px" src="{{ entite.mapImage }}"></td>
+                <td>
+                    <form method="post" action="{{ path('maps_read', {'id': entite.id}) }}">
+                        <button class="btn" style="background-color: darkgreen; color: white">Info about the map {{ entite.mapName }}</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

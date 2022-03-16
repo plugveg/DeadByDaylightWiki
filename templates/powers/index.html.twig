@@ -9,23 +9,35 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>This is the Powers Page! ☠️</h1>
+    <br>
+    <b style="color: red">Death is not an espace ! Remember</b>
+    <br>
+    <br>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/PowersController.php'|file_link(0) }}">src/Controller/PowersController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/powers/index.html.twig'|file_link(0) }}">templates/powers/index.html.twig</a></code></li>
-    </ul>
-
-    {% for entite in Powers %}
-        <ul>
-            <b>{{ entite.PowerName }}</b>
-        </ul>
-        <img src="{{ entite.PowerImage }}">
-        <br>
-        <td>
-            <a href="{{ path('powers_read', {'id': entite.id}) }}">INFO ABOUT THE POWER</a>
-        </td>
-    {% endfor %}
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Photo</th>
+            <th scope="col">More Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entite in Powers %}
+            <tr>
+                <th scope="row">{{ entite.id }}</th>
+                <td>{{ entite.PowerName }}</td>
+                <td><img style="width: 100px" src="{{ entite.PowerImage }}"></td>
+                <td>
+                    <form method="post" action="{{ path('powers_read', {'id': entite.id}) }}">
+                        <button class="btn" style="background-color: darkred; color: white">Info about {{ entite.PowerName }}</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

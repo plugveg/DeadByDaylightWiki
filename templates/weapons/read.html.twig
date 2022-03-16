@@ -1,18 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <style>
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+            height: 30%;
+        }
+        .centercard{
+            display: block;
+            margin-top: 2%;
+            padding-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
 
-    <h1>{{ weapon.WeaponName }}</h1>
-    <div>
-        <h2>Weapon Image</h2>
-        <img src="{{ weapon.WeaponImage }}" alt="photo weapon">
+    <div class="card text-white bg-dark mb-3 centercard">
+        <img class="card-img-top center" src="{{ weapon.WeaponImage }}" alt="Card image cap" >
+        <div class="card-body">
+            <h1 class="card-title">{{ weapon.WeaponName }}</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h5>Weapon Description : </h5><br>{{ weapon.WeaponDescription | nl2br }}</li>
+        </ul>
+        <div class="card-body">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="card-link" href="{{ path('weapons_edit', {'id': weapon.id}) }}">Edit the weapon</a>
+            {% endif %}
+        </div>
     </div>
-    <div>
-        <p>
-            {{ weapon.WeaponDescription | nl2br }}
-        </p>
-    </div>
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('weapons_edit', {'id': weapon.id}) }}">edit</a>
-    {% endif %}
 {% endblock %}

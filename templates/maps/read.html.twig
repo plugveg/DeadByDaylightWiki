@@ -1,21 +1,37 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <style>
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+            height: 30%;
+        }
+        .centercard{
+            display: block;
+            margin-top: 2%;
+            padding-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
 
-    <h1>{{ map.MapName }}</h1>
-    <div>
-        <h2>Map Image</h2>
-        <img src="{{ map.MapImage }}" alt="photo map">
+    <div class="card text-white bg-dark mb-3 centercard">
+        <img class="card-img-top center" src="{{ map.MapImage }}" alt="Card image cap" >
+        <div class="card-body">
+            <h1 class="card-title">{{ map.MapName }}</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h5>Map Description : </h5><br>{{ map.MapDescription | nl2br }}</li>
+            <li class="list-group-item"><h5>Map Layout : </h5><br><img src="{{ map.MapLayout }}" alt="layout map"></li>
+        </ul>
+        <div class="card-body">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="card-link" href="{{ path('maps_edit', {'id': map.id}) }}">Edit the maps</a>
+            {% endif %}
+        </div>
     </div>
-    <div>
-        <p>
-            {{ map.MapDescription | nl2br }}
-        </p>
-    </div>
-    <div>
-        <h2>Map Layout</h2>
-        <img src="{{ map.MapLayout }}" alt="layout map">
-    </div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('maps_edit', {'id': map.id}) }}">edit</a>
-    {% endif %}
 {% endblock %}

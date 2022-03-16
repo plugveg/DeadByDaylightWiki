@@ -1,58 +1,65 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <style>
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+            height: 30%;
+        }
+        .centercard{
+            display: block;
+            margin-top: 2%;
+            padding-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
 
-    <h1>{{ killer.KillerNickname }}</h1>
-    <h2>{{ killer.KillerName }}</h2>
-    <div>
-        <img src="{{ killer.KillerImage }}">
-    </div>
-    {% if killer.KillerMap != NULL %}
-        <div>
-            <p>
-                {{ killer.KillerMap.MapName }}
-                <img src="{{ killer.KillerMap.MapImage }}">
-            </p>
+    <div class="card text-white bg-dark mb-3 centercard">
+        <img class="card-img-top center" src="{{ killer.KillerImage }}" alt="Card image cap" >
+        <div class="card-body">
+            <h1 class="card-title">{{ killer.KillerName }}</h1>
+            <h2 class="card-text">Also known under the nickname : {{ killer.KillerNickname }}</h2>
         </div>
-    {% endif %}
-    {% if killer.KillerWeapon != NULL %}
-        <div>
-            <p>
-                {{ killer.KillerWeapon.WeaponName }}
-                <img src="{{ killer.KillerWeapon.WeaponImage }}">
-            </p>
-        </div>
-    {% endif %}
-    {% if killer.KillerPower != NULL %}
-        <div>
-            <p>
-                {{ killer.KillerPower.PowerName }}
-                <img src="{{ killer.KillerPower.PowerImage }}">
-            </p>
-        </div>
-    {% endif %}
-    <div>
-        <p>
-            {{ killer.KillerSpeed }}
-        </p>
-    </div>
-    <div>
-        <p>
-            {{ killer.KillerHistory | nl2br }}
-        </p>
-    </div>
-    <div>
-        <p>
-            {{ killer.KillerSummary | nl2br }}
-        </p>
-    </div>
-    <div>
-        {% for entite in killer.KillerPerks %}
-            {% if entite.PerkkillerName %}
-                <img src="{{ entite.PerkkillerImage }}">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h5>Killer History : </h5><br>{{ killer.KillerHistory | nl2br }}</li>
+            <li class="list-group-item"><h5>Killer Summary : </h5><br>{{ killer.KillerSummary | nl2br }}</li>
+            <li class="list-group-item"><h5>Killer speed : </h5><br>{{ killer.KillerSpeed | nl2br }}</li>
+            {% if killer.KillerMap != NULL %}
+                <li class="list-group-item"><h5>Killer map : </h5><br>{{ killer.KillerMap.MapName | nl2br }}</li>
             {% endif %}
-        {% endfor %}
+            {% if killer.KillerPower != NULL %}
+                <li class="list-group-item"><h5>Killer power : </h5><br>{{ killer.KillerPower.PowerName | nl2br }}</li>
+            {% endif %}
+            {% if killer.KillerWeapon != NULL %}
+                <li class="list-group-item"><h5>Killer weapon : </h5><br>{{ killer.KillerWeapon.WeaponName | nl2br }}</li>
+            {% endif %}
+            <li class="list-group-item">
+                <h5>Killer Perks : </h5><br>
+                {% for entite in killer.KillerPerks %}
+                    {% if entite.PerkkillerName %}
+                        <p>{{ entite.PerkkillerName }}</p>
+                        <img src="{{ entite.PerkkillerImage }}">
+                    {% endif %}
+                {% endfor %}
+        </ul>
+        <div class="card-body">
+            {% for entite in killer.KillerPerks %}
+                {% if entite.PerkkillerName %}
+                    <a class="card-link" href="{{ path('perkskillers_read', {'id': entite.id}) }}">Info about {{ entite.PerkkillerName }}</a>
+                {% endif %}
+            {% endfor %}
+            <a class="card-link" href="{{ path('maps_read', {'id': killer.KillerMap.id}) }}">Info about {{ killer.KillerMap.MapName }}</a>
+            <a class="card-link" href="{{ path('powers_read', {'id': killer.KillerPower.id}) }}">Info about {{ killer.KillerPower.PowerName }}</a>
+            <a class="card-link" href="{{ path('weapons_read', {'id': killer.KillerWeapon.id}) }}">Info about {{ killer.KillerWeapon.WeaponName }}</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="card-link" href="{{ path('killers_edit', {'id': killer.id}) }}">Edit the killer</a>
+            {% endif %}
+        </div>
     </div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('killers_edit', {'id': killer.id}) }}">edit</a>
-    {% endif %}
+
 {% endblock %}

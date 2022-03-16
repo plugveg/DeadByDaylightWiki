@@ -9,31 +9,34 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/PerksController.php'|file_link(0) }}">src/Controller/PerksController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/perks/index.html.twig'|file_link(0) }}">templates/perks/index.html.twig</a></code></li>
-    </ul>
-
+    <h1>This is the Survivor Perks Page! ☠️</h1>
+    <br>
+    <b style="color: red">Death is not an espace ! Remember</b>
+    <br>
+    <br>
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Photo</th>
+            <th scope="col">More Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entite in Perks %}
+            <tr>
+                <th scope="row">{{ entite.id }}</th>
+                <td>{{ entite.PerkName }}</td>
+                <td><img style="width: 100px" src="{{ entite.PerkImage }}"></td>
+                <td>
+                    <form method="post" action="{{ path('perks_read', {'id': entite.id}) }}">
+                        <button class="btn" style="background-color: blue; color: white">Info about {{ entite.PerkName }}</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
-<div style="text-align: center">
-    {% for entite in Perks %}
-        <ul>
-            <b>{{ entite.PerkName }}</b>
-        </ul>
-        <img src="{{ entite.PerkImage }}">
-        <br>
-        <td>
-            <a href="{{ path('perks_read', {'id': entite.id}) }}">INFO ABOUT THE PERK</a>
-        </td>
-        <br>
-        {% if entite.PerkSurvivor %}
-            <img src="{{ entite.PerkSurvivor.SurvivorImage }}">
-        {% endif %}
-
-    {% endfor %}
-</div>
-
 {% endblock %}

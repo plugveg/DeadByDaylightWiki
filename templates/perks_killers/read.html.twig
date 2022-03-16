@@ -1,16 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <style>
+        .center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+            height: 30%;
+        }
+        .centercard{
+            display: block;
+            margin-top: 2%;
+            padding-top: 2%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
 
-    <h1>{{ perkkiller.PerkkillerName }}</h1>
-    <div>
-        <img src="{{ perkkiller.PerkkillerImage }}">
+    <div class="card text-white bg-dark mb-3 centercard">
+        <img class="card-img-top center" src="{{ perkkiller.PerkkillerImage }}" alt="Card image cap" >
+        <div class="card-body">
+            <h1 class="card-title">{{ perkkiller.PerkkillerName }}</h1>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h5>Perk Explanation : </h5><br>{{ perkkiller.PerkkillerExplanation | nl2br }}</li>
+        </ul>
+        <div class="card-body">
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="card-link" href="{{ path('perkskillers_edit', {'id': perkkiller.id}) }}">Edit the perk killer</a>
+            {% endif %}
+        </div>
     </div>
-    <div>
-        <p>
-            {{ perkkiller.PerkkillerExplanation | nl2br }}
-        </p>
-    </div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('perkskillers_edit', {'id': perkkiller.id}) }}">edit</a>
-    {% endif %}
 {% endblock %}

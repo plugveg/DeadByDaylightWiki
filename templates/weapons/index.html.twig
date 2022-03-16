@@ -9,24 +9,35 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>This is the Weapons Page! ☠️</h1>
+    <br>
+    <b style="color: red">Death is not an espace ! Remember</b>
+    <br>
+    <br>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/WeaponsController.php'|file_link(0) }}">src/Controller/WeaponsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/weapons/index.html.twig'|file_link(0) }}">templates/weapons/index.html.twig</a></code></li>
-    </ul>
-
-    {% for entite in Weapons %}
-        <ul>
-            <b>{{ entite.WeaponName }}</b>
-        </ul>
-        <img src="{{ entite.WeaponImage }}">
-        <br>
-        <td>
-            <a href="{{ path('weapons_read', {'id': entite.id}) }}">INFO ABOUT THE WEAPON</a>
-        </td>
-    {% endfor %}
-
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Photo</th>
+            <th scope="col">More Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entite in Weapons %}
+            <tr>
+                <th scope="row">{{ entite.id }}</th>
+                <td>{{ entite.WeaponName }}</td>
+                <td><img style="width: 100px" src="{{ entite.WeaponImage }}"></td>
+                <td>
+                    <form method="post" action="{{ path('weapons_read', {'id': entite.id}) }}">
+                        <button class="btn" style="background-color: indianred; color: white">Info about {{ entite.WeaponName }}</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

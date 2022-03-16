@@ -9,33 +9,35 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>This is the Killers Page! ☠️</h1>
+    <br>
+    <b style="color: red">Death is not an espace ! Remember</b>
+    <br>
+    <br>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/src/Controller/KillersController.php'|file_link(0) }}">src/Controller/KillersController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/DeadByDaylight/templates/killers/index.html.twig'|file_link(0) }}">templates/killers/index.html.twig</a></code></li>
-    </ul>
-
-    {% for entite in Killers %}
-        <ul>
-            <b>{{ entite.KillerName }}</b>
-        </ul>
-        <img src="{{ entite.KillerImage }}">
-        <br>
-        <td>
-            <a href="{{ path('killer_read', {'id': entite.id}) }}">INFO ABOUT THE KILLER</a>
-        </td>
-{#        <br>
-        {% for perk in entite.KillerPerks %}
-            {% if perk.PerkkillerName %}
-                <img src="{{ perk.PerkkillerImage }}">
-            {% endif %}
-        {% endfor %}#}
-    {% endfor %}
-
-    {% for killer in Killers %}
-
-    {% endfor %}
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Photo</th>
+            <th scope="col">More Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entite in Killers %}
+            <tr>
+                <th scope="row">{{ entite.id }}</th>
+                <td>{{ entite.KillerNickname }}</td>
+                <td><img style="width: 100px" height="150px;" src="{{ entite.KillerImage }}"></td>
+                <td>
+                    <form method="post" action="{{ path('killer_read', {'id': entite.id}) }}">
+                        <button class="btn" style="background-color: firebrick; color: white">Info about {{ entite.KillerNickname }}</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
